@@ -45,7 +45,7 @@ function getEmptyToy() {
 
 function createToy() {
     return {
-        name: utilService.makeLorem(20),
+        name: utilService.makeLorem(2),
         imgUrl: '',
         price: utilService.getRandomIntInclusive(25, 250),
         lables: [],
@@ -55,7 +55,7 @@ function createToy() {
 }
 
 function __createToys() {
-    const toys = utilService.loadFromStorage(STORAGE_KEY)
+    let  toys = utilService.loadFromStorage(STORAGE_KEY)
     if (toys && toys.length > 0) return
     toys = []
     for (var i = 0; i < 12; i++) {
