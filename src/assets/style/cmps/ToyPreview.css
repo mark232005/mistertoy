@@ -1,0 +1,12 @@
+.toy-card{
+    padding: 100px;
+    border-radius: 25px;
+    background-color: #F9FAFB;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+}
+.toy-card:hover{
+    background-color: #E5E7EB;
+}
+.btn-card {
+    gap: 9px;
+}

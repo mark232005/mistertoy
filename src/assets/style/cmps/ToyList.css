@@ -1,0 +1,10 @@
+.toy-list {
+    gap: 2em;
+    justify-content: center;
+    margin-block: 1em;
+}
+
+.toy-list ul {
+    display: contents
+}
+

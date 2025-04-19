@@ -10,4 +10,6 @@
 @import 'base/layout.css';
 
 /* Cmps*/
-@import 'cmps/AppHeader.css'
+@import 'cmps/AppHeader.css';
+@import 'cmps/ToyList.css';
+@import 'cmps/ToyPreview.css';

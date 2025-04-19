@@ -2,3 +2,11 @@
 .app-header{
     justify-content: flex-end
 }
+.toy-list{
+    grid-template-columns: repeat(auto-fill, minmax(230px, 1fr));
+
+}
+.toy-card{
+    display: flex;
+    flex-direction: column
+}
