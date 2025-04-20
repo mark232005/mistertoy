@@ -13,7 +13,9 @@ export const SET_FILTER_BY = 'SET_FILTER_BY'
 const initialState = {
     toys: [],
     isLoading: false,
-    filterBys:toyService.getDefaultFilter()
+    filterBy:toyService.getDefaultFilter(),
+    sortBy:toyService.getDefaultSort(),
+    labls:[]
 }
 
 export function toyReducer(state = initialState, action = {}) {
@@ -40,13 +42,11 @@ export function toyReducer(state = initialState, action = {}) {
                 ...state, isLoading: action.isLoading
             }
             case SET_FILTER_BY:
-                return{
-
+                return {
+                    ...state, filterBy: { ...state.filterBy, ...action.filterBy }
                 }
 
         default:
-            return {
-                ...state, filterBy: { ...state.filterBy, ...action.filterBy }
-            }
+            return state
     }
 }

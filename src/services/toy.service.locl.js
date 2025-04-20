@@ -4,19 +4,45 @@ import { utilService } from "./util.service.js"
 const STORAGE_KEY = 'toyDB'
 
 __createToys()
+const labels = [
+    'On wheels',
+    'Box game',
+    'Art',
+    'Baby',
+    'Doll',
+    'Puzzle',
+    'Outdoor',
+    'Battery Powered'
+  ];
+  
 
-export const toyService ={
+export const toyService = {
     query,
     getById,
     remove,
     save,
-    getDefaultFilter
+    getDefaultFilter,
+    getDefaultSort,
+    labels
 
 }
 
 
 function query(filterBy = {}) {
-    return storageService.query(STORAGE_KEY)
+    return storageService.query(STORAGE_KEY).then(
+        toys => {
+            var toysToShow = [...toys]
+            if (filterBy.txt) {
+                const regExp = new RegExp(filterBy.txt, 'i')
+                toysToShow = toysToShow.filter(toy => regExp.test(toy.name))
+            }
+            if (typeof filterBy.inStock === 'boolean') {
+                toysToShow = toysToShow.filter(toy => toy.inStock === filterBy.inStock)
+                console.log(toysToShow);
+            }
+            return toysToShow
+        }
+    )
 }
 
 function getById(toyId) {
@@ -55,7 +81,7 @@ function createToy() {
 }
 
 function __createToys() {
-    let  toys = utilService.loadFromStorage(STORAGE_KEY)
+    let toys = utilService.loadFromStorage(STORAGE_KEY)
     if (toys && toys.length > 0) return
     toys = []
     for (var i = 0; i < 12; i++) {
@@ -67,5 +93,8 @@ function __createToys() {
     utilService.saveToStorage(STORAGE_KEY, toys)
 }
 function getDefaultFilter() {
-    return { name: '',inStock:null,lables:[]  }
+    return { txt: '', inStock: null, lables: [] }
+}
+function getDefaultSort() {
+    return { type: '', desc: 1 }
 }

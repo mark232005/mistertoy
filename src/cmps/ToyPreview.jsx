@@ -1,7 +1,6 @@
 
 
 export function ToyPreview({toy}){
-    console.log(toy);
 return(
     <section className="toy-card " >
         <h1>{toy.name}</h1>

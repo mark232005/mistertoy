@@ -1,21 +1,28 @@
 
 import { useSelector } from 'react-redux'
 import { useEffect } from 'react'
-import { loadToys } from '../store/toys/toy.actions.js'
+import { loadToys, setFilterBy } from '../store/toys/toy.actions.js'
 import { ToyList } from '../cmps/Toylist.jsx'
+import { ToyFilter } from '../cmps/ToyFilter.jsx'
+import { toyService } from '../services/toy.service.locl.js'
 export function ToyIndex() {
     const toys = useSelector(storeState => storeState.toyModule.toys)
     const isLoading=useSelector(storeState => storeState.toyModule.isLoading)
+    const filterBy=useSelector(storeState => storeState.toyModule.filterBy)
+    const sortBy=useSelector(storeState => storeState.toyModule.sortBy)
+    const labels=toyService.labels
     useEffect(() => {
         loadToys()
-    }, [])
+    }, [filterBy])
 
+function onFilterBy(filterBy){
+setFilterBy(filterBy)
+}
 
-
-if(isLoading)return 'Loading ....'
-    return(
-        <section className='toy-index'>
-            <ToyList toys={toys}/>
+return(
+    <section className='toy-index'>
+            <ToyFilter filterBy={filterBy} sortBy={sortBy} onFilterBy={onFilterBy} labels={labels}/>
+            {!isLoading?<ToyList toys={toys}/>:'Loading...'}
         </section>
     )
 }
