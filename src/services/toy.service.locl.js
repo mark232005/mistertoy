@@ -28,7 +28,7 @@ export const toyService = {
 }
 
 
-function query(filterBy = {}) {
+function query(filterBy = {},sortBy={}) {
     return storageService.query(STORAGE_KEY).then(
         toys => {
             var toysToShow = [...toys]
@@ -39,6 +39,18 @@ function query(filterBy = {}) {
             if (typeof filterBy.inStock === 'boolean') {
                 toysToShow = toysToShow.filter(toy => toy.inStock === filterBy.inStock)
                 console.log(toysToShow);
+            }
+            if(sortBy.type==='name'){
+                toysToShow.sort((a,b)=>{
+                    return a.name.localeCompare(b.name)
+                })
+           }
+            if(sortBy.type==='price'){
+                toysToShow.sort((a,b)=>(a.price-b.price))
+
+            }
+            if(sortBy.type==='date'){
+                toysToShow.sort((a,b)=>(a.createdAt-b.createdAt))
             }
             return toysToShow
         }
