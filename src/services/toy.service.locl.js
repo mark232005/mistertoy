@@ -23,6 +23,7 @@ export const toyService = {
     save,
     getDefaultFilter,
     getDefaultSort,
+    getEmptyToy,
     labels
 
 }
@@ -71,16 +72,17 @@ function save(toy) {
         return storageService.post(STORAGE_KEY, toy)
     }
 }
+
 function getEmptyToy() {
     return {
-        name: '',
+        name:'',
         imgUrl: '',
         price: '',
-        lables: [],
+        labels: [],
+        inStock: ''
 
     }
 }
-
 function createToy() {
     return {
         name: utilService.makeLorem(2),

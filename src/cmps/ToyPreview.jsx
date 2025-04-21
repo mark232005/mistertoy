@@ -1,6 +1,7 @@
-
+import { useNavigate } from 'react-router-dom'
 
 export function ToyPreview({toy,remove}){
+    const navigate = useNavigate()
 return(
     <section className="toy-card " >
         <h1>{toy.name}</h1>
@@ -9,7 +10,7 @@ return(
         <div className=" btn-card flex">
 
         <button onClick={()=>remove(toy._id)}>Remove</button>
-        <button>Edit</button>
+        <button onClick={()=>navigate(`/toy/edit/${toy._id}`)} >Edit</button>
         </div>
     </section>
 )

@@ -32,7 +32,7 @@ export function removeToy(toyId) {
 export function saveToy(toy) {
     const type = toy._id ? UPDATE_TOY : ADD_TOY
     return toyService.save(toy).then(saveToy => {
-        store.dispatch({ type: type, saveToy })
+        store.dispatch({ type: type, toy:saveToy })
         return saveToy
     }
     ).catch(err => {
