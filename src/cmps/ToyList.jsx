@@ -1,6 +1,6 @@
 import { ToyPreview } from "./ToyPreview.jsx";
 
-export function ToyList({ toys }) {
+export function ToyList({ toys, onRemoveToy }) {
 
     return (
         <section className="toy-list grid ">
@@ -8,7 +8,7 @@ export function ToyList({ toys }) {
                 {
                     toys.map(toy => (
                         <li key={toy._id} className="flex">
-                            <ToyPreview toy={toy} />
+                            <ToyPreview toy={toy} remove={onRemoveToy} />
                         </li>
                     ))
                 }

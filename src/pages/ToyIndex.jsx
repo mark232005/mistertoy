@@ -1,7 +1,7 @@
 
 import { useSelector } from 'react-redux'
 import { useEffect } from 'react'
-import { loadToys, setFilterBy, setSortBy } from '../store/toys/toy.actions.js'
+import { loadToys, removeToy, setFilterBy, setSortBy } from '../store/toys/toy.actions.js'
 import { ToyList } from '../cmps/Toylist.jsx'
 import { ToyFilter } from '../cmps/ToyFilter.jsx'
 import { toyService } from '../services/toy.service.locl.js'
@@ -22,10 +22,15 @@ function onSortBy(sortBy){
     setSortBy(sortBy)
 }
 
+function onRemoveToy(toyId){
+removeToy(toyId).catch(err=>{
+    console.log('Cannot remove toy', err)
+})
+}
 return(
     <section className='toy-index'>
             <ToyFilter filterBy={filterBy} sortBy={sortBy} onFilterBy={onFilterBy} labels={labels} onSortBy={onSortBy}/>
-            {!isLoading?<ToyList toys={toys}/>:'Loading...'}
+            {!isLoading?<ToyList toys={toys} onRemoveToy={onRemoveToy}/>:'Loading...'}
         </section>
     )
 }

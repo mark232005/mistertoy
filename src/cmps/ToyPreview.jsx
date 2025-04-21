@@ -1,6 +1,6 @@
 
 
-export function ToyPreview({toy}){
+export function ToyPreview({toy,remove}){
 return(
     <section className="toy-card " >
         <h1>{toy.name}</h1>
@@ -8,7 +8,7 @@ return(
         <p>{toy.isStock?'Not in stock':'In stock'}</p>
         <div className=" btn-card flex">
 
-        <button>Remove</button>
+        <button onClick={()=>remove(toy._id)}>Remove</button>
         <button>Edit</button>
         </div>
     </section>
