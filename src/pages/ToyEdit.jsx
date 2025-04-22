@@ -1,14 +1,20 @@
 import { toyService } from "../services/toy.service.locl.js"
-import { useState } from "react"
+import { useState,useEffect } from "react"
 import { saveToy } from "../store/toys/toy.actions.js"
-import { useNavigate } from 'react-router-dom'
+import { useNavigate,useParams } from 'react-router-dom'
 
 
 export function ToyEdit() {
+    const { toyId } = useParams()
     const labels = toyService.labels
     const [toyToEdit, setToyToEdit] = useState(toyService.getEmptyToy())
     const navigate = useNavigate()
 
+    useEffect(()=>{
+        if(toyId){
+            toyService.getById(toyId).then(toy=>setToyToEdit(toy))
+        }
+    },[])
     function onSave(ev) {
         ev.preventDefault()
         saveToy(toyToEdit).then(()=>navigate('/toy')
