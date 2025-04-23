@@ -18,16 +18,37 @@
     border-radius: 40px;
     color: #60A5FA;
 }
-.user-btn{
-    border-radius: 20px;
-    padding: 12px;
-    padding-left: 40px;
-    padding-right: 40px;
-    border: none;
-    color: whitesmoke;
-    background-color:#2376dd ;
+.user-btn {
+    padding: 12.5px 30px;
+    border: 0;
+    border-radius: 100px;
+    background-color: #2376dd;
+    color: #ffffff;
+    font-weight: Bold;
+    transition: all 0.5s;
+    -webkit-transition: all 0.5s;
+  }
+  
+  .user-btn:hover {
+    background-color: #54b6f8;
+    box-shadow: 0 0 20px #6fc5ff50;
+    transform: scale(1.1);
+  }
+  
+  .user-btn:active {
+    background-color: #3d94cf;
+    transition: all 0.25s;
+    -webkit-transition: all 0.25s;
+    box-shadow: none;
+    transform: scale(0.98);
+  }
+.links-header{
+    gap: 15px;
 }
-.user-btn:hover{
-    background-color:#b3b3b3;
-    
+.logo{
+    font-size: larger;
+    margin-left: 10px;
+    font-weight: bold;
 }
+
+
