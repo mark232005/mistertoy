@@ -1,6 +1,7 @@
 
 .app-header{
-    justify-content: space-between
+    justify-content: space-between;
+    align-items: baseline
 }
 .toy-list{
     grid-template-columns: repeat(auto-fill, minmax(230px, 1fr));

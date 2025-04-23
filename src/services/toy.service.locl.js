@@ -39,7 +39,6 @@ function query(filterBy = {},sortBy={}) {
             }
             if (typeof filterBy.inStock === 'boolean') {
                 toysToShow = toysToShow.filter(toy => toy.inStock === filterBy.inStock)
-                console.log(toysToShow);
             }
             if(sortBy.type==='name'){
                 toysToShow.sort((a,b)=>{

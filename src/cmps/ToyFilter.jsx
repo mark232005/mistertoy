@@ -1,14 +1,23 @@
 import { useEffect, useState } from 'react'
+import * as React from 'react';
+import TextField from '@mui/material/TextField';
+import Autocomplete from '@mui/material/Autocomplete';
+import Textarea from '@mui/joy/Textarea';
+import Select from '@mui/joy/Select';
+import Option from '@mui/joy/Option'
+export function ToyFilter({ sortBy, filterBy, onFilterBy, labels, onSortBy }) {
 
-export function ToyFilter({ sortBy, filterBy, onFilterBy, labels,onSortBy }) {
     const [filterByToEdit, setFilterByToEdit] = useState({ ...filterBy })
-    const [sortByToEdit, setSortByToEdit] = useState({ ...sortBy})
+
+    const [sortByToEdit, setSortByToEdit] = useState({ ...sortBy })
+
     useEffect(() => {
         onFilterBy(filterByToEdit)
         onSortBy(sortByToEdit)
-    }, [filterByToEdit,sortByToEdit])
-    function handleChangeFilter({ target }) {
-        var { value, name: field } = target
+    }, [filterByToEdit, sortByToEdit])
+
+    function handleChangeFilter(field, value) {
+
         if (value === 'true') {
             value = true
         } else if (value === 'false') {
@@ -16,36 +25,83 @@ export function ToyFilter({ sortBy, filterBy, onFilterBy, labels,onSortBy }) {
         }
         setFilterByToEdit(prev => ({ ...prev, [field]: value }))
     }
-    function handleChangeSort({ target }) {
-        var { value } = target
+
+    function handleChangeSort(ev, value) {
+        console.log(value);
         setSortByToEdit(prev => ({ ...prev, type: value }))
     }
+
+    const options =
+        labels.map(label => ({ label: label }))
+
+
     return (
-        <section className="filterBy" >
-            <h3>Toys Filter/Sort</h3>
-            <div className="filterBy">
-                <label htmlFor="txt"></label>
-                <input type="text" id="txt" name="txt" placeholder="Search" onChange={handleChangeFilter} value={filterBy.txt} />
+        <section className="filterBy-page" >
+            <h3>Toys Filter/Sort:</h3>
+            <div className='filterBy flex'>
+                
+                <Textarea
+                    name="txt"
+                    id="txt"
+                    onChange={(e) => {
+                        handleChangeFilter('txt', e.target.value)
+                    }}
+                    value={filterBy.txt}
+                    color="primary"
+                    disabled={false}
+                    minRows={2}
+                    sx={{ width: 300 }}
+                    placeholder="search"
+                    size="sm"
+                    variant="outlined"
+                />
 
-                < select onChange={handleChangeFilter} name="inStock">
-                    <option>All</option>
-                    <option value="true">For Sale</option>
-                    <option value="false">sale out</option>
-                </select>
+                    <Autocomplete
+                        onChange={(event, newValue) => {
+                            handleChangeFilter('labels', newValue.map(opt => opt.label))
+                        }}
+                        multiple
+                        variant="outlined"
+                        color="primary"
+                        disablePortal
+                        options={options}
+                        sx={{ width: 150 }}
+                        renderInput={(params) => <TextField {...params} label="Labels" />}
+                    />
 
-            </div>
-            <div className="sortBy" onChange={handleChangeSort} >
-                <select>
-                    <option value="">Sort by</option>
-                    <option value="name">Name</option>
-                    <option value="price">Price</option>
-                    <option value="date">Date</option>
-                </select>
-            </div>
-            <div className="labels">
-                <select multiple size="5" onChange={handleChangeFilter}>
-                    {labels.map(label => <option key={label} value={label}>{label}</option>)}
-                </select>
+
+
+                    <Select
+                        name='inStock'
+                        onChange={(e, newValue) => {
+                            console.log('newValue', newValue);
+                            let val = newValue === 'true' ? true : newValue === 'false' ? false : ''
+                            setFilterByToEdit(prev => ({ ...prev, inStock: val }))
+                        }}
+                        color="primary"
+                        placeholder="All"
+                        size="sm"
+                        variant="outlined"
+                    >
+                        <Option value="">All</Option>
+                        <Option value="true">For Sale</Option>
+                        <Option value="false">Soldout</Option>
+                    </Select>
+
+                    <Select
+                        onChange={((e, newValue) => {
+                            handleChangeSort(e, newValue)
+                        })}
+                        color="primary"
+                        placeholder="Sort by"
+                        size="sm"
+                        variant="outlined"
+                    >
+                        <Option value="name">Name</Option>
+                        <Option value="price">Price</Option>
+                        <Option value="date">Date</Option>
+                    </Select>
+
             </div>
         </section>
     )

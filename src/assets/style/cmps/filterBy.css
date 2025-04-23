@@ -1,0 +1,12 @@
+.filterBy-page{
+    border-radius: 30px;
+    background-color: #fafafa;
+
+    padding: 10px;
+}
+
+.filterBy{
+    margin-left: 170px;
+    gap: 15px;
+
+}
