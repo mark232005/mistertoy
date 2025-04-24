@@ -35,7 +35,8 @@ removeToy(toyId).catch(err=>{
 return(
     <section className='toy-index'>
             <ToyFilter filterBy={filterBy} sortBy={sortBy} onFilterBy={onFilterBy} labels={labels} onSortBy={onSortBy}/>
-            <button className='add-btn' onClick={()=>navigate(`/toy/edit/`)}>Add toy</button>
+            <button  className='add-btn' onClick={()=>navigate(`/toy/edit/`)}>Add toy</button>
+            
             {!isLoading?<ToyList toys={toys} onRemoveToy={onRemoveToy}/>:'Loading...'}
         </section>
     )

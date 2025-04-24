@@ -85,7 +85,7 @@ function getEmptyToy() {
 function createToy() {
     return {
         name: utilService.makeLorem(2),
-        imgUrl: '',
+        imgUrl: 'https://myshopshop.com/wp-content/uploads/2023/01/Supe-3.webp',
         price: utilService.getRandomIntInclusive(25, 250),
         lables: [],
         inStock: true
