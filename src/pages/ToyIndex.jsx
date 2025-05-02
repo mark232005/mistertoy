@@ -4,7 +4,7 @@ import { useEffect } from 'react'
 import { loadToys, removeToy, setFilterBy, setSortBy } from '../store/toys/toy.actions.js'
 import { ToyList } from '../cmps/Toylist.jsx'
 import { ToyFilter } from '../cmps/ToyFilter.jsx'
-import { toyService } from '../services/toy.service.locl.js'
+import { toyService } from '../services/toy.service-remote.js'
 import { useNavigate } from 'react-router-dom'
 
 

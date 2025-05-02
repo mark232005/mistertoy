@@ -1,5 +1,5 @@
-.add-btn
- {
+
+.add-btn {
     margin-top: 20px;
     border: none;
     display: flex;
@@ -19,20 +19,22 @@
     gap: 0.75rem;
     box-shadow: 0 4px 6px -1px #488aec31, 0 2px 4px -1px #488aec17;
     transition: all 0.6s ease;
-  }
-  
-  .add-btn:hover {
-    box-shadow: 0 10px 15px -3px #488aec4f, 0 4px 6px -2px #488aec17;
-  }
-  
-  .add-btn:focus,
-  .add-btn:active {
-    opacity: 0.85;
-    box-shadow: none;
-  }
-  
-  .add-btn svg {
-    width: 1.25rem;
-    height: 1.25rem;
+
+    &:hover {
+      box-shadow: 0 10px 15px -3px #488aec4f, 0 4px 6px -2px #488aec17;
+    }
+
+    &:focus ,
+    &:active{
+      opacity: 0.85;
+      box-shadow: none;
+
+    }
+
+    svg{
+      width: 1.25rem;
+      height: 1.25rem;
+
+    }
   }
   

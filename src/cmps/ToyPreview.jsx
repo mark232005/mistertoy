@@ -2,7 +2,6 @@ import { useNavigate } from 'react-router-dom'
 
 export function ToyPreview({toy,remove}){
     const navigate = useNavigate()
-    console.log(toy.inStock);
 return(
     <article  >
         <img className='img-card' src={toy.imgUrl} alt="התמונה של המוצר" />

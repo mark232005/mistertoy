@@ -1,0 +1,17 @@
+
+/* Setup */
+@import 'setup/vars';
+@import 'setup/animations';
+@import 'setup/typography';
+
+/* Base */
+@import 'base/base';
+@import 'base/helpers';
+@import 'base/layout';
+
+/* Cmps*/
+@import 'cmps/AppHeader';
+@import 'cmps/ToyList.scss';
+@import 'cmps/ToyPreview.scss';
+@import 'cmps/filterBy';
+@import 'cmps/AddBtn';

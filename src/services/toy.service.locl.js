@@ -21,6 +21,7 @@ export const toyService = {
     getById,
     remove,
     save,
+    
     getDefaultFilter,
     getDefaultSort,
     getEmptyToy,
@@ -85,7 +86,7 @@ function getEmptyToy() {
 function createToy() {
     return {
         name: utilService.makeLorem(2),
-        imgUrl: 'https://myshopshop.com/wp-content/uploads/2023/01/Supe-3.webp',
+        imgUrl: '',
         price: utilService.getRandomIntInclusive(25, 250),
         lables: [],
         inStock: true

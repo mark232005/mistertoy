@@ -74,7 +74,6 @@ export function ToyFilter({ sortBy, filterBy, onFilterBy, labels, onSortBy }) {
                     <Select
                         name='inStock'
                         onChange={(e, newValue) => {
-                            console.log('newValue', newValue);
                             let val = newValue === 'true' ? true : newValue === 'false' ? false : ''
                             setFilterByToEdit(prev => ({ ...prev, inStock: val }))
                         }}

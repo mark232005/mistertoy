@@ -1,6 +1,6 @@
 import { useParams } from "react-router-dom"
 import { useEffect ,useState } from 'react'
-import { toyService } from "../services/toy.service.locl.js"
+import { toyService } from "../services/toy.service-remote.js"
 
 export function ToyDetails(){
     const { toyId } = useParams()

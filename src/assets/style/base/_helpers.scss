@@ -1,0 +1,53 @@
+/* flex helpers */
+
+.flex {
+  display: flex;
+
+
+  &.justify-center {
+    justify-content: center;
+  }
+  &.justify-between {
+    justify-content: space-between;
+  }
+  
+  &.align-center {
+    align-items: center;
+  }
+  
+  &-columns {
+    
+  }
+  .columns {
+    
+  }
+}
+
+
+.grid{
+  display: grid;
+}
+
+
+
+.flex.flex-column {
+  flex-direction: column;
+}
+
+
+  
+  /* text helpers */
+  
+  .colored-text {
+    color: var(--clr1);
+  }
+  
+  /* list helpers */
+  
+  .clean-list {
+    padding: 0;
+    margin: 0;
+    list-style-type: none;
+  }
+  
+  

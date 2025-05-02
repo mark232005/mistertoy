@@ -1,7 +1,7 @@
-import { toyService } from "../services/toy.service.locl.js"
-import { useState,useEffect } from "react"
+import { toyService } from '../services/toy.service-remote.js'
+import { useState, useEffect } from "react"
 import { saveToy } from "../store/toys/toy.actions.js"
-import { useNavigate,useParams } from 'react-router-dom'
+import { useNavigate, useParams } from 'react-router-dom'
 
 
 export function ToyEdit() {
@@ -10,19 +10,21 @@ export function ToyEdit() {
     const [toyToEdit, setToyToEdit] = useState(toyService.getEmptyToy())
     const navigate = useNavigate()
 
-    useEffect(()=>{
-        if(toyId){
-            toyService.getById(toyId).then(toy=>setToyToEdit(toy))
+    useEffect(() => {
+        if (toyId) {
+            toyService.getById(toyId).then(toy => setToyToEdit(toy))
         }
-    },[])
+    }, [])
     function onSave(ev) {
         ev.preventDefault()
-        saveToy(toyToEdit).then(()=>navigate('/toy')
-        
+        console.log('edit',toyToEdit);
+        // if(!toyToEdit.imgUrl)
+        saveToy(toyToEdit).then(() => navigate('/toy')
+
         )
-        .catch(err => {
-            console.log('Saving toy failed', err);
-        })
+            .catch(err => {
+                console.log('Saving toy failed', err);
+            })
     }
     function handleChange({ target }) {
         const { name, value, type, checked, selectedOptions } = target
