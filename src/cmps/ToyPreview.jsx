@@ -3,7 +3,7 @@ import { useNavigate } from 'react-router-dom'
 export function ToyPreview({toy,remove}){
     const navigate = useNavigate()
 return(
-    <article  >
+    <article >
         <img className='img-card' src={toy.imgUrl} alt="התמונה של המוצר" />
         <div className='card'>
         <h1 className='name-card'>{toy.name}</h1>

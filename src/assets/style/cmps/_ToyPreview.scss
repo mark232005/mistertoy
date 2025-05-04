@@ -10,10 +10,13 @@
      transform: scale(1.1);
 
    }
+   & article{
+     align-self: center;
+   }
  }
-
  .img-card {
-
+  padding: 20px;
+background-color: white;
    border-radius: 25px;
  }
 
