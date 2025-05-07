@@ -7,9 +7,9 @@ export function PieChart({ toys }) {
         return  toys.filter(toy=>toy.inStock).reduce((acc, toy) => {
             toy.labels.forEach(label => {
                 acc[label] = (acc[label] || 0) + 1;
-            });
+            })
             return acc;
-        }, { 'On wheels': 0, 'Box game': 0, 'Art': 0, 'Baby': 0, 'Doll': 0, 'Puzzle': 0, 'Outdoor': 0, 'Battery Powered': 0 });
+        }, { 'On wheels': 0, 'Box game': 0, 'Art': 0, 'Baby': 0, 'Doll': 0, 'Puzzle': 0, 'Outdoor': 0, 'Battery Powered': 0 })
 
     }
     ChartJS.register(ArcElement, Tooltip, Legend);

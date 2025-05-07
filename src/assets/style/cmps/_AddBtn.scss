@@ -1,40 +1,55 @@
-
-.add-btn {
-    margin-top: 20px;
-    border: none;
-    display: flex;
-    padding: 0.75rem 1.5rem;
-    background-color: #488aec;
-    color: #ffffff;
-    font-size: 0.75rem;
-    line-height: 1rem;
-    font-weight: 700;
-    cursor: pointer;
-    text-align: center;
-    text-transform: uppercase;
-    vertical-align: middle;
-    align-items: center;
-    border-radius: 0.5rem;
-    user-select: none;
-    gap: 0.75rem;
-    box-shadow: 0 4px 6px -1px #488aec31, 0 2px 4px -1px #488aec17;
-    transition: all 0.6s ease;
-
-    &:hover {
-      box-shadow: 0 10px 15px -3px #488aec4f, 0 4px 6px -2px #488aec17;
-    }
-
-    &:focus ,
-    &:active{
-      opacity: 0.85;
-      box-shadow: none;
-
-    }
-
-    svg{
-      width: 1.25rem;
-      height: 1.25rem;
-
-    }
-  }
+.add-button {
+  margin: 15px;
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center; /* מרכז את התוכן */
+  width: 144px;
+  height: 40px;
+  border: 2px solid #22c55e;
+  background-color: #22c55e;
+  border-radius: 0.5rem;
+  cursor: pointer;
+  overflow: hidden;
+  direction: rtl;
+  .text{
+    margin-right: 10px;
+    color: #e5e7eb;
+    font-weight: 600;
+    transition: transform 0.3s ease, opacity 0.3s ease;
+    z-index: 1;
   
+  }
+  .icon {
+    position: absolute;
+    top: 0;
+    right: 0;
+    height: 100%;
+    width: 40px;
+    background-color: #22c55e;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: width 0.3s ease;
+    border-radius: 0.5rem;
+    z-index: 0;
+  }
+  &:hover .text{
+    transform: translateX(-100%);
+    opacity: 0;
+  
+  }
+  &:hover .icon{
+    width: 100%;
+
+  }
+
+}
+
+
+.icon {
+  color: white;
+  width: 24px;
+  height: 24px;
+}
+
