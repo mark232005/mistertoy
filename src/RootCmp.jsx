@@ -9,6 +9,7 @@ import { AboutUs } from './pages/AboutUs.jsx'
 import { ToyDetails } from './pages/ToyDetails.jsx'
 import { ToyEdit } from './pages/ToyEdit.jsx'
 import './assets/style/main.scss'
+import { Dashboard } from './pages/Dashboard.jsx'
 
 
 
@@ -25,6 +26,7 @@ export function App() {
                             <Route element={<AboutUs />} path="/about" />
                             <Route element={<ToyIndex />} path="/toy" />
                             <Route element={<ToyDetails />} path="/toy/:toyId" />
+                            <Route element={<Dashboard/>} path="/dashboard" />
                             <Route element={<ToyEdit />} path="/toy/edit/:toyId?" />
                         </Routes>
                     </main>

@@ -1,6 +1,7 @@
 import { useNavigate } from "react-router-dom";
 import { ToyPreview } from "./ToyPreview.jsx";
 export function ToyList({ toys, onRemoveToy }) {
+    console.log(toys);
     const navigate = useNavigate()
 
     function handleRemove(ev, toyId) {
