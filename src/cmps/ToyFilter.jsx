@@ -36,7 +36,7 @@ export function ToyFilter({ sortBy, filterBy, onFilterBy, labels, onSortBy }) {
 
 
     return (
-        <section className="filterBy-page" >
+        <section className="filterBy-page" style={{margin:'15px'}} >
             <h3>Toys Filter/Sort:</h3>
             <div className='filterBy flex'>
                 

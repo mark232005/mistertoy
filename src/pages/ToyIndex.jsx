@@ -56,6 +56,7 @@ export function ToyIndex() {
                 </span>
             </button>
 
+
             {!isLoading ? <ToyList toys={toys} onRemoveToy={onRemoveToy} /> : 'Loading...'}
         </section>
     )

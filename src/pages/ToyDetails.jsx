@@ -3,11 +3,14 @@ import { useEffect, useState } from 'react'
 import { toyService } from "../services/toy.service-remote.js"
 import { useNavigate } from 'react-router-dom'
 import { utilService } from "../services/util.service.js"
+import { PopUp } from "../cmps/PopUp.jsx"
+import { Chat } from "../cmps/chat.jsx"
 
 export function ToyDetails() {
     const navigate = useNavigate()
     const { toyId } = useParams()
     const [toy, setToy] = useState()
+    const [isChatOpen, setIsChatOpen] = useState(false)
     useEffect(() => {
         toyService.getById(toyId).then(toy => setToy(toy))
     }, [toyId])
@@ -64,6 +67,36 @@ export function ToyDetails() {
                 </div>
             </div>
             <img className="toy-details-img" src={toy.imgUrl} alt=" Toy img" />
+            <section>
+                <PopUp
+                    isOpen={isChatOpen}
+                    header={<h3>Chat about {toy.name}</h3>}
+                    onClose={()=>setIsChatOpen(false)}
+                    >
+                     
+<Chat/>
+                </PopUp>
+                
+            </section>
+            {/* {!isChatOpen && <button onClick={() => { setIsChatOpen(prev => !prev) }} className="open-chat">chat</button>} */}
+            {!isChatOpen &&
+                <div class="open-chat"  onClick={() => { setIsChatOpen(prev => !prev) }} >
+                    <div class="background-chat"></div>
+                    <svg viewBox="0 0 100 100" height="100" width="100" class="chat-bubble">
+                        <g class="bubble">
+                            <path d="M 30.7873,85.113394 30.7873,46.556405 C 30.7873,41.101961
+          36.826342,35.342 40.898074,35.342 H 59.113981 C 63.73287,35.342
+          69.29995,40.103201 69.29995,46.784744" class="line line1"></path>
+                            <path d="M 13.461999,65.039335 H 58.028684 C
+            63.483128,65.039335
+            69.243089,59.000293 69.243089,54.928561 V 45.605853 C
+            69.243089,40.986964 65.02087,35.419884 58.339327,35.419884" class="line line2"></path>
+                        </g>
+                        <circle cx="42.5" cy="50.7" r="1.9" class="circle circle1"></circle>
+                        <circle r="1.9" cy="50.7" cx="49.9" class="circle circle2"></circle>
+                        <circle cx="57.3" cy="50.7" r="1.9" class="circle circle3"></circle>
+                    </svg>
+                </div>}
 
         </section>
     )
