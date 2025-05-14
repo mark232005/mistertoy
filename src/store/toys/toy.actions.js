@@ -6,46 +6,55 @@ import { store } from "../store.js";
 import { ADD_TOY, REMOVE_TOY, SET_FILTER_BY, SET_IS_LOADING, SET_SORT_BY, SET_TOYS, UPDATE_TOY } from "../toys/toy.reducer.js";
 
 
-export function loadToys() {
+export async function loadToys() {
     const filterBy = store.getState().toyModule.filterBy
     const sortBy = store.getState().toyModule.sortBy
 
     store.dispatch({ type: SET_IS_LOADING, isLoading: true })
-    return toyService.query(filterBy,sortBy).then(toys => {
+
+    try {
+        const toys = await toyService.query(filterBy, sortBy)
         store.dispatch({ type: SET_TOYS, toys })
-    }).catch(err => {
+        return toys
+    }
+    catch (err) {
         console.log('Toys action -> Cannot load Toys', err)
         throw err
-    })
-        .finally(() => {
-            store.dispatch({ type: SET_IS_LOADING, isLoading: false })
-        })
-}
+    }
+    finally {
 
-export function removeToy(toyId) {
-    return toyService.remove(toyId).then(
-        () => { store.dispatch({ type: REMOVE_TOY, toyId }) }
-    ).catch((err) => {
+        store.dispatch({ type: SET_IS_LOADING, isLoading: false })
+    }
+
+}
+export async function removeToy(toyId) {
+    try {
+        const removedToy = await toyService.remove(toyId)
+        store.dispatch({ type: REMOVE_TOY, toyId })
+        return removedToy
+    }
+    catch (err) {
         console.log('car action -> Cannot remove car', err)
         throw err
-    })
+    }
 }
-export function saveToy(toy) {
+export async function saveToy(toy) {
     const type = toy._id ? UPDATE_TOY : ADD_TOY
-    return toyService.save(toy).then(saveToy => {
-        store.dispatch({ type: type, toy:saveToy })
+    try {
+        const saveToy = await toyService.save(toy)
+        store.dispatch({ type: type, toy: saveToy })
         return saveToy
     }
-    ).catch(err => {
+    catch (err) {
         console.log('toy action -> Cannot save toy', err)
         throw err
-    })
+    }
 }
 
 export function setFilterBy(filterBy) {
-	store.dispatch({ type: SET_FILTER_BY, filterBy })
+    store.dispatch({ type: SET_FILTER_BY, filterBy })
 }
-export function setSortBy(sortBy){
+export function setSortBy(sortBy) {
     store.dispatch({ type: SET_SORT_BY, sortBy })
 
 }

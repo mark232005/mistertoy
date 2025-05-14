@@ -17,8 +17,6 @@ export function ToyEdit() {
     }, [])
     function onSave(ev) {
         ev.preventDefault()
-        console.log('edit',toyToEdit);
-        // if(!toyToEdit.imgUrl)
         saveToy(toyToEdit).then(() => navigate('/toy')
 
         )

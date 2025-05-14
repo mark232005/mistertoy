@@ -27,7 +27,6 @@ export const toyService = {
 
 function query(filterBy = {},sortBy={}) {
     return httpService.get(BASE_URL, {filterBy,sortBy})
-    // return axios.get(BASE_URL, {params: { filterBy, sortBy, pageIdx }})
 }
 
 function getById(toyId) {
@@ -40,7 +39,8 @@ function remove(toyId) {
 
 function save(toy) {
     const method = toy._id ? 'put' : 'post'
-    return httpService[method](BASE_URL, toy)
+    const url = toy._id ? `${BASE_URL}${toy._id}` : BASE_URL
+    return httpService[method](url, toy)
 }
 
 function getEmptyToy() {

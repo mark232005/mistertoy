@@ -27,7 +27,6 @@ export function ToyFilter({ sortBy, filterBy, onFilterBy, labels, onSortBy }) {
     }
 
     function handleChangeSort(ev, value) {
-        console.log(value);
         setSortByToEdit(prev => ({ ...prev, type: value }))
     }
 
@@ -99,6 +98,7 @@ export function ToyFilter({ sortBy, filterBy, onFilterBy, labels, onSortBy }) {
                         <Option value="name">Name</Option>
                         <Option value="price">Price</Option>
                         <Option value="date">Date</Option>
+                        <Option value=""></Option>
                     </Select>
 
             </div>
