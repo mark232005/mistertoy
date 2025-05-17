@@ -10,6 +10,7 @@ import { ToyDetails } from './pages/ToyDetails.jsx'
 import { ToyEdit } from './pages/ToyEdit.jsx'
 import './assets/style/main.scss'
 import { Dashboard } from './pages/Dashboard.jsx'
+import { LogPage } from './pages/Login.jsx'
 
 
 
@@ -28,6 +29,7 @@ export function App() {
                             <Route element={<ToyDetails />} path="/toy/:toyId" />
                             <Route element={<Dashboard/>} path="/dashboard" />
                             <Route element={<ToyEdit />} path="/toy/edit/:toyId?" />
+                            <Route element={<LogPage/>} path="/login" />
                         </Routes>
                     </main>
                 </section>

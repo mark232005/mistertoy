@@ -1,7 +1,23 @@
 
+import { useSelector } from 'react-redux';
 import { NavLink } from 'react-router-dom'
+import { useNavigate } from 'react-router-dom';
+import { logout } from '../store/user/user.actions.js';
 
 export function AppHeader() {
+    const user = useSelector(storeState => storeState.userModule.loggedInUser)
+    function isUser() {
+        return user && user.fullname && user.fullname !== ''
+    }
+    async function _logout() {
+        try {
+            await logout()
+        } catch (err) {
+            throw err
+        }
+    }
+    const navigate = useNavigate()
+    console.log(isUser());
     return (
         <section className='app-header flex'>
             <div className='logo'>
@@ -13,7 +29,14 @@ export function AppHeader() {
                 <NavLink to="/about">{('AboutUs')}</NavLink>
                 <NavLink to="/toy">{('Toys')}</NavLink>
                 <NavLink to="/dashboard">{('Dashboard')}</NavLink>
-                <button className='user-btn'>Sign in</button>
+                {
+                    isUser() ?
+                        <div className="user-info flex">
+                            <span className="user-info-name">Hello {user.fullname}</span>
+                            <button onClick={_logout} className='user-btn'>Logout</button>
+                        </div> :
+                        <button onClick={() => navigate('/login')} className='user-btn'>Sign in</button>
+                }
             </div>
         </section>
     )
