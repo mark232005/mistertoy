@@ -1,0 +1,16 @@
+.chat-user-container {
+margin-top: 4px;
+    width: 1500px;
+    margin-right: 111px;
+    flex-direction: column;
+
+    & h2 {
+        align-self: start;
+    }
+
+    .chat {
+      height: 500px;
+      overflow-y: auto;
+
+    }
+}

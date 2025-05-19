@@ -21,6 +21,7 @@ export const toyService = {
 
     getDefaultFilter,
     getDefaultSort,
+    addMsg,
    labels
  
 }
@@ -42,7 +43,9 @@ function save(toy) {
     const url = toy._id ? `${BASE_URL}${toy._id}` : BASE_URL
     return httpService[method](url, toy)
 }
-
+async function addMsg(toyId,msg){
+    return httpService.post(BASE_URL+`${toyId}/msg`,msg)
+}
 function getEmptyToy() {
     return {
         name:'',

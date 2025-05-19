@@ -1,7 +1,7 @@
 import { userService } from "../../services/user.service.js";
 export const SET_USER = 'SET_USER'
 const initialState = {
-    loggedInUser: userService.getEmptyCredentials()
+    loggedInUser: userService.getLoggedInUser()
 }
 export function userReducer(state = initialState, action = {}) {
     switch (action.type) {
