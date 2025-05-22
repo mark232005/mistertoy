@@ -107,7 +107,7 @@ function __createToys() {
     utilService.saveToStorage(STORAGE_KEY, toys)
 }
 function getDefaultFilter() {
-    return { txt: '', inStock: null, lables: [] }
+    return { txt: '', inStock: null, lables: [],pageIdx:0 }
 }
 function getDefaultSort() {
     return { type: '', desc: 1 }

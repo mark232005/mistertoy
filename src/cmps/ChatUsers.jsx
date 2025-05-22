@@ -7,7 +7,6 @@ export function ChatUser({ user, msgs, sendMsg }) {
         
         messagesEndRef.current?.scrollIntoView({ behavior: 'smooth' });
     }, [msgs]);
-console.log(msgs);
     function addMsg(txt) {
         const newMsg = {
             txt
@@ -40,7 +39,7 @@ console.log(msgs);
             </div>
             <div className="flex">
 
-                <input type="text" onChange={(ev) => setUserInput(ev.target.value)} />
+                <input value={userInput} type="text" onChange={(ev) => setUserInput(ev.target.value)} />
                 <button onClick={()=>handleInput()}>send</button>
             </div>
 
